@@ -1,7 +1,13 @@
 function NablaKFi = BackwardDifference(FArray, Order, Index)
+  persistent memoized
+  if isempty(memoized)
+    memoized = memoize(@BackwardDifference);
+    memoized.CacheSize = 50;
+  end
+
   if Order == 1
     NablaKFi = FArray(Index) - FArray(Index - 1);
   else
-    NablaKFi = BackwardDifference(FArray, Order - 1, Index) - BackwardDifference(FArray, Order - 1, Index - 1);
+    NablaKFi = memoized(FArray, Order - 1, Index) - memoized(FArray, Order - 1, Index - 1);
   end
 end % function
