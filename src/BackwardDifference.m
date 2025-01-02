@@ -11,6 +11,8 @@ function NablaKFi = BackwardDifference(FArray, Order, Index)
 
   if Order == 1
     NablaKFi = FArray(Index) - FArray(Index - 1);
+  elseif Order < 1
+    error ('Order is now less than 1. Check input arguments.')
   else
     NablaKFi = memoized(FArray, Order - 1, Index) - memoized(FArray, Order - 1, Index - 1);
   end
