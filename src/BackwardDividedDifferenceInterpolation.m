@@ -1,15 +1,16 @@
-fun = @(x)(x.^2)
+fun = @(x)(sin(x))
 h = 0.1
-x = linspace(-1, 1, 2/h + 1);
-y = fun(x);
+X = linspace(-1, 1, 2/h + 1);
+Y = fun(X);
+[~, ysize] = size(Y);
+x = 0.9;
 
-[~, ysize] = size(y)
+coeff = @(i)(OneOverFactorial(i) * BackwardDifference(Y, i, ysize));
 
-coeff = @(n)(OneOverFactorial(n) * BackwardDifference(y, n, ysize));
+sum = Y(ysize);
+x_n = X(ysize);
 
-sum = y(ysize);
-polynom = 1/h * [1, -y(ysize)]
-for i = ysize
-  sum = AddTerms(polynom, coeff(i), sum);
-  polynom = ThetaProduct(polynom, x, h);
-end % for
+for i=[1:ysize - 1]
+  sum = sum + coeff(i) * ThetaProduct(x, x_n, h, i);
+end
+

@@ -9,10 +9,10 @@ function NablaKFi = BackwardDifference(FArray, Order, Index)
     memoized.CacheSize = 50;
   end
 
-  if Order == 1
+  if Order == 0
+    NablaKFi = FArray(Index);
+  elseif Order == 1
     NablaKFi = FArray(Index) - FArray(Index - 1);
-  elseif Order < 1
-    error ('Order is now less than 1. Check input arguments.')
   else
     NablaKFi = memoized(FArray, Order - 1, Index) - memoized(FArray, Order - 1, Index - 1);
   end
