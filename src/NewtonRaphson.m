@@ -16,7 +16,7 @@ function [ Approximation ] = NewtonRaphson(Function, FunctionDerivative, Toleran
     if abs(Function(Approximation)) <= Tolerance
       return ;
     end % if
-    disp(Approximation)
+    %disp(Approximation);
     Approximation = Approximation - Function(Approximation)/FunctionDerivative(Approximation);
     LoopCounter = LoopCounter + 1;
   end % while

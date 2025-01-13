@@ -7,7 +7,6 @@ function [ Approximation ] = Bisection(f, Start, End, TOL)
     return;
   end
 
-  tic;
   FA = f(Start);
   LoopCounter = 1;
   Approximation = 0;
@@ -26,13 +25,11 @@ function [ Approximation ] = Bisection(f, Start, End, TOL)
         Approximation = End;
       end
 
-      disp(Approximation);
-      toc;
+      %disp(Approximation);
       return;
     end
 
     if (FP == 0) || abs(middle_point) < TOL
-      toc;
       return ;
     end
 
@@ -48,5 +45,4 @@ function [ Approximation ] = Bisection(f, Start, End, TOL)
 
   end
   disp(["Failure after ", num2str(N_0)]);
-  toc;
 end
