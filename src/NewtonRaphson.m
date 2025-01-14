@@ -1,23 +1,16 @@
-% PSEUODO CODE ( based on Numerical Analysis - Reza Mokhtari)
-%   INPUT f, f', e, x
-%   OUTPUT x for which |f(x)| < e
-%   1. let n=0
-%   2. x = x - f(x)/f'(x)
-%   3. if |f(x)|<e print x and stop
-%   4. return to step 2
-
-
 function [ Approximation ] = NewtonRaphson(Function, FunctionDerivative, Tolerance, Init)
   LoopCounter = 1;
-  LOOPLIMIT = 1e3;
+  % There is absolutely no reason for this choice of bound
+  % It is there to prevent infinite loops
+  LOOPLIMIT = 5e1;
 
   Approximation = Init;
-  while LoopCounter <= LOOPLIMIT
-    if abs(Function(Approximation)) <= Tolerance
-      return ;
-    end % if
-    %disp(Approximation);
-    Approximation = Approximation - Function(Approximation)/FunctionDerivative(Approximation);
+  FunctionValue = Function(Approximation);
+
+  while (LoopCounter <= LOOPLIMIT) & (abs(FunctionValue) >= Tolerance)
+    Approximation = Approximation - FunctionValue / FunctionDerivative(Approximation);
+    FunctionValue = Function(Approximation);
     LoopCounter = LoopCounter + 1;
-  end % while
+  end
+
 end % function
