@@ -4,11 +4,11 @@ analysis course. The problem is as follows:
 - Using inverse interpolation and numerical root finding methods, write a program to find the value
   that satisfies the following equation. For the task of inverse interpolation and root finding, use
   any of the following pair of methods. In the end compare inverse interpolation versus using
-  function definition itself for root finding.
-  $\int_0^x{\frac{cos(t) - t}{t}} = -0.3$
+  function definition itself for root finding. (Forward divided difference, bisection), (Backward divided difference, Newton-Raphson), (Limited forward difference, false position), (Limited backward difference, tangent)
+  $\int_0^x{\frac{cos(t) - 1}{t}} = -0.3$
 
 # Methods
-To solve this problem we take two approaches. In the first we let $f(x)=\int_0^x{\frac{cos(t)-t}{t}}$
+To solve this problem we take two approaches. In the first we let $f(x)=\int_0^x{\frac{cos(t)-1}{t}}$
 and use this function definition for root finding. In the second we use Newton backwards divided
 difference method to interpolate this function and use that interpolation polynomial to approximate
 the root.
@@ -19,7 +19,7 @@ that as initial input to Newton-Raphson method.
 # Usage
 To run this program simply clone this repository, move to "src/" directory and execute "Problem1.m"
 file from MATLAB console. This file is a script which will run the program for some given default
-inputs. These inputs can be changed by editing this file. They include interpolator degree,
+inputs. These inputs can be changed by editing this file. They include interpolation polynomial degree,
 tolerance which represents the maximum absolute error the program tries to reach and a few more.
 Note that the program tries to reach that tolerance value but sometimes might not. These scenarios
 may happen when polynomial degree is set lower than necessary to reach a given tolerance. In order
@@ -34,7 +34,7 @@ You can always get more information about how everything is done in this program
 source code.
 
 # How is the problem solved?
-We first plot the function to gain some information about the root. Using the follwoing commands in
+We first plot the function to gain some information about the root. Using the following commands in
 MATLAB we can get a nice graph of the function under the integral and $f(x)$.
 ```
 X = linspace(-2*pi, 2*pi, 1000);
