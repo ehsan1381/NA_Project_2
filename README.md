@@ -4,7 +4,7 @@ analysis course. The problem is as follows:
 - Using inverse interpolation and numerical root finding methods, write a program to find the value
   that satisfies the following equation. For the task of inverse interpolation and root finding, use
   any of the following pair of methods. In the end compare inverse interpolation versus using
-  function definition itself for root finding. (Forward divided difference, bisection), (Backward divided difference, Newton-Raphson), (Limited forward difference, false position), (Limited backward difference, tangent)
+  function definition itself for root finding. (Forward divided difference, bisection), (Backward divided difference, Newton-Raphson), (Limited forward difference, false position), (Limited backward difference, secant)
   $\int_0^x{\frac{cos(t) - 1}{t}} = -0.3$
 
 # Methods
