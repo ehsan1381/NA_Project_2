@@ -1,14 +1,11 @@
 # Description
-This repository aims to solve a simple root finding problem posed as assignemtn during a numerical
+This repository aims to solve a simple root finding problem posed as assignment during a numerical
 analysis course. The problem is as follows:
 - Using inverse interpolation and numerical root finding methods, write a program to find the value
   that satisfies the following equation. For the task of inverse interpolation and root finding, use
   any of the following pair of methods. In the end compare inverse interpolation versus using
   function definition itself for root finding.
-  $$
-     \int_0^x{\frac{cos(t) - t}{t}} = -0.3
-
-  $$
+  $\int_0^x{\frac{cos(t) - t}{t}} = -0.3$
 
 # Methods
 To solve this problem we take two approaches. In the first we let $f(x)=\int_0^x{\frac{cos(t)-t}{t}}$
