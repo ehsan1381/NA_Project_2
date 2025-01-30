@@ -12,18 +12,22 @@ assert(N_0 < 14, 'Failure on N_0');
 
 
 %% Step 1
-Approximation = Bisection(f, intervalStart, intervalEnd, tolerance * 1e3);
-assert(Approximation - correctRoot <= tolerance * 1e3, 'Failure on step 1');
+Approximation = Bisection(f, intervalStart, intervalEnd, tolerance * 1e2);
+assert(abs(Approximation - correctRoot) <= tolerance * 1e2, 'Failure on step 1');
 
 
 %% Step 2
-Approximation = Bisection(f, intervalStart, intervalEnd, tolerance * 1e2);
-assert(Approximation - correctRoot <= tolerance * 1e2, 'Failure on step 2');
+Approximation = Bisection(f, intervalStart, intervalEnd, tolerance * 1e1);
+assert(abs(Approximation - correctRoot) <= tolerance * 1e1, 'Failure on step 2');
 
 %% Step 3
-Approximation = Bisection(f, intervalStart, intervalEnd, tolerance * 1e1);
-assert(Approximation - correctRoot <= tolerance * 1e1, 'Failure on step 3');
+Approximation = Bisection(f, intervalStart, intervalEnd, tolerance);
+assert(abs(Approximation - correctRoot) <= tolerance, 'Failure on step 3');
 
 %% Step 4
-Approximation = Bisection(f, intervalStart, intervalEnd, tolerance);
-assert(Approximation - correctRoot <= tolerance, 'Failure on step 4');
+Approximation = Bisection(f, intervalStart, intervalEnd, tolerance * 1e-1);
+assert(abs(Approximation - correctRoot) <= tolerance * 1e-1, 'Failure on step 4');
+
+%% Step 5
+Approximation = Bisection(f, intervalStart, intervalEnd, 1e-9);
+assert(abs(Approximation - correctRoot) <= 1e-9, 'Failure on step 5');
