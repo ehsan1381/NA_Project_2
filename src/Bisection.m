@@ -18,18 +18,6 @@ function [ Approximation ] = Bisection(f, Start, End, TOL)
 
     % in case start, end or midpoint are good approximations
     FP = f(Approximation);
-    if abs(FA) <= TOL
-      Approximation = Start;
-      return;
-
-    elseif abs(f(End)) <= TOL
-      Approximation = End;
-      return;
-    elseif abs(FP) <= TOL
-      return;
-    end
-
-
     LoopCounter = LoopCounter + 1;
 
     if FA * FP > 0
@@ -40,5 +28,4 @@ function [ Approximation ] = Bisection(f, Start, End, TOL)
     end
 
   end
-  disp(["Failure after ", num2str(N_0)]);
 end
